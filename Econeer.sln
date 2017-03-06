@@ -1,0 +1,35 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{649486C5-8DB4-B596-978C-F1C2987F28E7}") = "Econeer", "Assembly-CSharp-firstpass.csproj", "{172E2BE9-0B8A-DA94-57D2-34FBFE61D780}"
+EndProject
+Project("{649486C5-8DB4-B596-978C-F1C2987F28E7}") = "Econeer", "Assembly-CSharp.csproj", "{24F20DD9-527C-56D0-3191-7723566A2B5E}"
+EndProject
+Project("{649486C5-8DB4-B596-978C-F1C2987F28E7}") = "Econeer", "Assembly-CSharp-Editor.csproj", "{4BB332F2-E5E5-01FE-D482-0459E9ED177E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{172E2BE9-0B8A-DA94-57D2-34FBFE61D780}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{172E2BE9-0B8A-DA94-57D2-34FBFE61D780}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{172E2BE9-0B8A-DA94-57D2-34FBFE61D780}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{172E2BE9-0B8A-DA94-57D2-34FBFE61D780}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24F20DD9-527C-56D0-3191-7723566A2B5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24F20DD9-527C-56D0-3191-7723566A2B5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24F20DD9-527C-56D0-3191-7723566A2B5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24F20DD9-527C-56D0-3191-7723566A2B5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BB332F2-E5E5-01FE-D482-0459E9ED177E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BB332F2-E5E5-01FE-D482-0459E9ED177E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BB332F2-E5E5-01FE-D482-0459E9ED177E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BB332F2-E5E5-01FE-D482-0459E9ED177E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

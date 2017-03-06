@@ -1,0 +1,16 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ObtainInput.cs">
+    <Files>
+      <File FileName="Assets\Scripts\GameController.cs" Line="84" Column="4" />
+      <File FileName="Assets\Scripts\EyeRaycasting.cs" Line="38" Column="3" />
+      <File FileName="Assets\Scripts\ObtainInput.cs" Line="9" Column="8" />
+      <File FileName="Assets\Scripts\UserInterface_Object.cs" Line="21" Column="53" />
+      <File FileName="Assets\Scripts\Constrain_Rotation.cs" Line="25" Column="3" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
