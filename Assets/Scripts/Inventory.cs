@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour
 	private string name, description;
 	private GameObject obj;
 	private Texture2D icon;
+	private GameObject basePrefab;
 	public void Init(int cost, int happiness, int energy, int people, string name, string desc, GameObject obj, Texture2D icon)
 	{
 		this.cost = cost;
@@ -23,4 +24,10 @@ public class Inventory : MonoBehaviour
 	{
 
 	}
+	/*public GameObject obtainObject()
+	{
+		spawnableObject.transform.position = Vector3.zero;
+		return spawnableObject;
+	}*/
 }
+

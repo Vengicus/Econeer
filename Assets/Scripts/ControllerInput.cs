@@ -146,7 +146,7 @@ public class ControllerInput : MonoBehaviour {
 				if (!GameController.noVR) {
 					spawnOrigin = controllers [1].transform;
 				}
-				GameObject spawnableObject = hitObject.GetComponent<UserInterface_Object>().obtainObject();
+				GameObject spawnableObject = null;//hitObject.GetComponent<UserInterface_Object>().obtainObject();
 				Vector3 spawnPos = new Vector3 (spawnOrigin.position.x, spawnOrigin.position.y, spawnOrigin.position.z);
 				attachedObject = (GameObject)Instantiate (spawnableObject, spawnPos, Quaternion.identity);
 				attachedObject.name = "TestObject";

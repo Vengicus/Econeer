@@ -52,11 +52,11 @@
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\HeadTracking.cs" />
      <Compile Include="Assets\Scripts\Inventory.cs" />
+     <Compile Include="Assets\Scripts\InventoryList.cs" />
      <Compile Include="Assets\Scripts\LevelEditor.cs" />
      <Compile Include="Assets\Scripts\ObtainInput.cs" />
      <Compile Include="Assets\Scripts\PlotTiler.cs" />
      <Compile Include="Assets\Scripts\UI_Interaction.cs" />
-     <Compile Include="Assets\Scripts\UserInterface_Object.cs" />
      <Compile Include="Assets\Scripts\grid.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />

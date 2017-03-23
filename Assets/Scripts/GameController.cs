@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
 	private UI_Interaction uiInteraction;
 	public GameObject[] controllers;
 	public GameObject camera;
+	public GameObject inventoryPrefab;
 
 	private Vector2 previousTile;
 	// Use this for initialization
@@ -22,13 +23,28 @@ public class GameController : MonoBehaviour
 	public static GameObject FPSController;
 	private GameObject interactionTransform;
 
+
+	[System.Serializable]
+	public struct InventoryStruct
+	{
+		[System.Serializable]
+		public struct InventoryArray
+		{
+			public string name, description;
+			public int cost, people, power, happiness;
+		}
+		public InventoryArray[] inv;
+	}
+
 	void Start () 
 	{
+		InventoryStruct inventory = new InventoryStruct ();
 		GameController.noVR = noVirtualReality;
-		inventoryAssets = AssetDatabase.LoadAllAssetsAtPath ("Assets");
+		inventoryAssets = Resources.LoadAll("BuildingIcons", typeof(Texture2D));
 		foreach (Object o in inventoryAssets) 
 		{
-			Debug.Log (o.name);
+			inventory = JsonUtility.FromJson<InventoryStruct> ("inventory.json");
+			Debug.Log (inventory.inv[0].name);
 		}
 		gridSystem = this.gameObject.GetComponent<grid>();
 		gridSystem.BuildGrid (new Vector2 (4, 4));
@@ -106,4 +122,5 @@ public class GameController : MonoBehaviour
 	{
 		return controllers;
 	}
+
 }
