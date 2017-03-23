@@ -17,9 +17,14 @@ public class GameController : MonoBehaviour
 	// Use this for initialization
 	public GameObject[,] objectsOnGrid;
 	private bool controllersFound;
+	public static bool noVR;
+	public bool noVirtualReality;
+	public static GameObject FPSController;
+	private GameObject interactionTransform;
 
 	void Start () 
 	{
+		GameController.noVR = noVirtualReality;
 		inventoryAssets = AssetDatabase.LoadAllAssetsAtPath ("Assets");
 		foreach (Object o in inventoryAssets) 
 		{
@@ -35,13 +40,22 @@ public class GameController : MonoBehaviour
 
 		controllersFound = false;
 
-
+		if (!noVR) 
+		{
+			interactionTransform = controllers [1];
+		} 
+		else 
+		{
+			interactionTransform = GameObject.Find("FirstPersonCharacter") as GameObject;
+			GameController.FPSController = GameObject.Find("FirstPersonCharacter") as GameObject;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		Vector2 hoveredTile = gridSystem.DetectGridHover (controllers[1].transform);
+
+		Vector2 hoveredTile = gridSystem.DetectGridHover (interactionTransform.transform);
 		if (hoveredTile.x >= 0) 
 		{
 			if (previousTile != null) 
@@ -51,6 +65,7 @@ public class GameController : MonoBehaviour
 			gridSystem.HighlightTile (hoveredTile, true);
 			previousTile = hoveredTile;
 		}
+
 		GameObject placedObject = controllerInputManager.DetectInput ();
 
 		if (placedObject != null) 
@@ -65,15 +80,15 @@ public class GameController : MonoBehaviour
 		if (controllersFound == false && controllers != null) 
 		{
 			controllersFound = true;
-			uiInteraction.InitializeUI ();
+
 
 		}
 		if (controllersFound) 
 		{
-			handleUI ();
+			
 		}
-
-
+		uiInteraction.InitializeUI ();
+		handleUI ();
 	}
 	void handleUI()
 	{

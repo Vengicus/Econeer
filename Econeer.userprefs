@@ -1,12 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ObtainInput.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameController.cs">
     <Files>
-      <File FileName="Assets\Scripts\GameController.cs" Line="84" Column="4" />
-      <File FileName="Assets\Scripts\EyeRaycasting.cs" Line="38" Column="3" />
-      <File FileName="Assets\Scripts\ObtainInput.cs" Line="9" Column="8" />
-      <File FileName="Assets\Scripts\UserInterface_Object.cs" Line="21" Column="53" />
-      <File FileName="Assets\Scripts\Constrain_Rotation.cs" Line="25" Column="3" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="24" Column="2" />
+      <File FileName="Assets\Scripts\Inventory.cs" Line="14" Column="3" />
+      <File FileName="Assets\Scripts\EyeRaycasting.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ObtainInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\UserInterface_Object.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Constrain_Rotation.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\UI_Interaction.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ControllerInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\grid.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

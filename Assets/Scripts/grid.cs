@@ -65,7 +65,7 @@ public class grid : MonoBehaviour
 	public Vector3 HoveredTilePosition(Vector2 index)
 	{
 		Vector3 tilePos = plotGrid [(int)index.x, (int)index.y].transform.position;
-		return new Vector3 (tilePos.x, tilePos.y + 0.15f, tilePos.z);
+		return new Vector3 (tilePos.x, tilePos.y + 0.05f, tilePos.z);
 	}
 	public GameObject HoveredTileObject(Vector2 index)
 	{

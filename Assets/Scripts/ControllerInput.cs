@@ -21,6 +21,8 @@ public class ControllerInput : MonoBehaviour {
 
 	public void BeginDetectingInput (GameObject[] controllerDevices) 
 	{
+		try
+		{
 		controllers = controllerDevices;
 		for(int x = 0; x < controllers.Length; x++)
 		{
@@ -29,7 +31,10 @@ public class ControllerInput : MonoBehaviour {
 		}
 
 		toolTipsObject = GameObject.Find ("ControllerTooltips");
+		}
+		catch {
 
+		}
 
 		uiRingParent = uiRing.transform.parent.gameObject;
 		uiAnim = uiRingParent.GetComponent (typeof(Animator)) as Animator;
@@ -37,24 +42,15 @@ public class ControllerInput : MonoBehaviour {
 	}
 	public GameObject DetectInput () 
 	{
-		
-		padLocation = new Vector2 (devices[0].getX(), devices[0].getY());
-		for (int x = 0; x < controllers.Length; x++) 
+		if (!GameController.noVR) 
 		{
-			if (devices[0].padUp()) 
+			padLocation = new Vector2 (devices [0].getX (), devices [0].getY ());
+			for (int x = 0; x < controllers.Length; x++) 
 			{
-				float midTouchRad = 0.25F;
-				Debug.Log ("UI");
-				if (UI_Toggle) 
+				if (devices [0].padUp ()) 
 				{
-					StartCoroutine ("CollapseUI");
-				} 
-				else 
-				{
-					StartCoroutine ("ExpandUI");
-				}
-				UI_Toggle = !UI_Toggle;
-				/*if (device.GetAxis ().y < midTouchRad && device.GetAxis ().y > -midTouchRad && device.GetAxis ().x < midTouchRad && device.GetAxis ().x > -midTouchRad) 
+					expandCollapseUI ();
+					/*if (device.GetAxis ().y < midTouchRad && device.GetAxis ().y > -midTouchRad && device.GetAxis ().x < midTouchRad && device.GetAxis ().x > -midTouchRad) 
 			{
 				if (UI_Toggle) 
 				{
@@ -77,58 +73,36 @@ public class ControllerInput : MonoBehaviour {
 					Debug.Log ("DOWN");
 				}
 			}*/
-			} 
-			if (devices[1].triggerUp()) 
-			{
-				RaycastHit hit;
-				if (Physics.Raycast (controllers [1].transform.position, controllers [1].transform.forward, out hit)) 
+				} 
+				if (devices [1].triggerUp () || Input.GetMouseButtonUp (0)) 
 				{
-					if (hit.transform.gameObject.name.ToLower ().Contains ("description") || hit.transform.gameObject.name.ToLower ().Contains ("icon")) 
-					{
-						if (attachedObject != null) {
-							Destroy (attachedObject);
-							attachedObject = null;
-						}
-						GameObject hitObject = hit.transform.gameObject;
-						GameObject spawnableObject = hitObject.GetComponent<UserInterface_Object>().obtainObject();
-						Vector3 spawnPos = new Vector3 (controllers [1].transform.position.x, controllers [1].transform.position.y + 0.05f, controllers [1].transform.position.z);
-						attachedObject = (GameObject)Instantiate (spawnableObject, spawnPos, Quaternion.identity);
-						attachedObject.name = "TestObject";
-						attachedObject.transform.parent = controllers [1].transform;
-						StartCoroutine ("CollapseUI");
-						//attachedObject.transform.position = controllers [1].transform.forward;
-					} 
-					else if (hit.transform.gameObject.name.ToLower().Contains("tile")) 
-					{
-						if (attachedObject != null) 
-						{
-							GameObject returnObject = attachedObject;
-							Destroy (attachedObject);
-							attachedObject = null;
-							returnObject.transform.parent = null;
-							StartCoroutine ("ExpandUI");
-							return returnObject;
-						} 
-						else 
-						{
-
-						}
-
-					}
-
+					return raycastToTile (controllers [1]);
 				}
-			} 
-			else if (devices[0].gripUp()) 
-			{
-				toolTips = !toolTips;
-				toolTipsObject.SetActive (toolTips);
-			}
+				else if (devices [0].gripUp ()) 
+				{
+					toolTips = !toolTips;
+					toolTipsObject.SetActive (toolTips);
+				}
 
+			}
+		} 
+		else 
+		{
+			if (Input.GetMouseButtonUp (1)) 
+			{
+				expandCollapseUI ();
+			}
+			if (Input.GetMouseButtonUp (0)) 
+			{
+				return raycastToTile (GameController.FPSController);
+			}
 		}
 		return null;
 	}
 	void FixedUpdate()
 	{
+		try
+		{
 		if (devices[0].getX() != 0 || devices[0].getY() != 0) 
 		{
 			//uiRing.transform.rotation = Quaternion.AngleAxis (analogRotationAngle (padLocation), uiRing.transform.up) * uiRing.transform.rotation;
@@ -137,11 +111,71 @@ public class ControllerInput : MonoBehaviour {
 			Quaternion angleAxis = Quaternion.AngleAxis (analogRotationAngle (padLocation), Vector3.up);// * uiRing.transform.rotation;
 			uiRing.transform.rotation = angleAxis;//Quaternion.Slerp (uiRing.transform.rotation, angleAxis, Time.deltaTime);
 		}
+		}
+		catch{
+		}
 	}
-	private void collapse()
-	{
-		
 
+	void expandCollapseUI()
+	{
+		float midTouchRad = 0.25F;
+		Debug.Log ("UI");
+		if (UI_Toggle) 
+		{
+			StartCoroutine ("CollapseUI");
+		} 
+		else 
+		{
+			StartCoroutine ("ExpandUI");
+		}
+		UI_Toggle = !UI_Toggle;
+	}
+	GameObject raycastToTile(GameObject origin)
+	{
+		RaycastHit hit;
+		if (Physics.Raycast (origin.transform.position, origin.transform.forward, out hit)) 
+		{
+			if (hit.transform.gameObject.name.ToLower ().Contains ("description") || hit.transform.gameObject.name.ToLower ().Contains ("icon")) 
+			{
+				if (attachedObject != null) {
+					Destroy (attachedObject);
+					attachedObject = null;
+				}
+				GameObject hitObject = hit.transform.gameObject;
+				Transform spawnOrigin = GameController.FPSController.transform;
+				if (!GameController.noVR) {
+					spawnOrigin = controllers [1].transform;
+				}
+				GameObject spawnableObject = hitObject.GetComponent<UserInterface_Object>().obtainObject();
+				Vector3 spawnPos = new Vector3 (spawnOrigin.position.x, spawnOrigin.position.y, spawnOrigin.position.z);
+				attachedObject = (GameObject)Instantiate (spawnableObject, spawnPos, Quaternion.identity);
+				attachedObject.name = "TestObject";
+				attachedObject.transform.parent = spawnOrigin;
+				attachedObject.transform.localScale = new Vector3 (0.08f, 0.08f, 0.08f);
+				StartCoroutine ("CollapseUI");
+				//attachedObject.transform.position = controllers [1].transform.forward;
+			} 
+			else if (hit.transform.gameObject.name.ToLower().Contains("tile")) 
+			{
+				if (attachedObject != null) 
+				{
+					GameObject returnObject = attachedObject;
+					Destroy (attachedObject);
+					attachedObject = null;
+					returnObject.transform.parent = null;
+					StartCoroutine ("ExpandUI");
+					Debug.Log ("Place");
+					return returnObject;
+				} 
+				else 
+				{
+
+				}
+
+			}
+
+		}
+		return null;
 	}
 	IEnumerator CollapseUI()
 	{

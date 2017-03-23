@@ -21,6 +21,7 @@ public class UI_Interaction : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag ("MainCamera") as GameObject;
 		//hierarchy = GameObject.Find ("UI_Ring_Hierarchy");
 		GameObject [] objects = GameObject.FindObjectsOfType<GameObject>();
+		Debug.Log (objects);
 		foreach (GameObject obj in objects) 
 		{
 			if (obj.name.Contains("UI_Element")) 
