@@ -54,7 +54,7 @@ public class Constrain_Rotation : MonoBehaviour {
 	{
 		if (uiRing != null) 
 		{
-			Debug.Log ("FOUND");
+			//Debug.Log ("FOUND");
 			uiRing.transform.eulerAngles = new Vector3 (Mathf.Clamp(uiRing.transform.eulerAngles.x, -1, 1), uiRing.transform.eulerAngles.y, Mathf.Clamp(uiRing.transform.eulerAngles.z, -1, 1));
 		}
 	}

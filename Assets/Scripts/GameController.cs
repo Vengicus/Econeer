@@ -10,42 +10,32 @@ public class GameController : MonoBehaviour
 	public grid gridSystem;
 	private ControllerInput controllerInputManager;
 	private UI_Interaction uiInteraction;
+	private List<Inventory_Object> inventory;
+	private JSON_Management jsonManagement;
+	private ToggleVR vrToggle;
+
 	public GameObject[] controllers;
 	public GameObject camera;
 	public GameObject inventoryPrefab;
+	public GameObject[,] objectsOnGrid;
+	private GameObject interactionTransform;
+	public static GameObject FPSController;
 
 	private Vector2 previousTile;
-	// Use this for initialization
-	public GameObject[,] objectsOnGrid;
 	private bool controllersFound;
-	public static bool noVR;
-	public bool noVirtualReality;
-	public static GameObject FPSController;
-	private GameObject interactionTransform;
-
-
-	[System.Serializable]
-	public struct InventoryStruct
-	{
-		[System.Serializable]
-		public struct InventoryArray
-		{
-			public string name, description;
-			public int cost, people, power, happiness;
-		}
-		public InventoryArray[] inv;
-	}
 
 	void Start () 
 	{
-		InventoryStruct inventory = new InventoryStruct ();
-		GameController.noVR = noVirtualReality;
+		vrToggle = GameObject.Find ("RequiredPrefab").GetComponent<ToggleVR> ();
+		inventory = new List<Inventory_Object> ();
 		inventoryAssets = Resources.LoadAll("BuildingIcons", typeof(Texture2D));
-		foreach (Object o in inventoryAssets) 
+
+		for(int x = 0; x < inventoryAssets.Length; x++)
 		{
-			inventory = JsonUtility.FromJson<InventoryStruct> ("inventory.json");
-			Debug.Log (inventory.inv[0].name);
+			
+
 		}
+
 		gridSystem = this.gameObject.GetComponent<grid>();
 		gridSystem.BuildGrid (new Vector2 (4, 4));
 		controllerInputManager = this.gameObject.GetComponent<ControllerInput>();
@@ -53,10 +43,9 @@ public class GameController : MonoBehaviour
 
 		eyeCaster = this.gameObject.GetComponent<EyeRaycasting> ();
 		uiInteraction = this.gameObject.GetComponent<UI_Interaction> ();
-
 		controllersFound = false;
 
-		if (!noVR) 
+		if (vrToggle.vrActive) 
 		{
 			interactionTransform = controllers [1];
 		} 
@@ -118,6 +107,7 @@ public class GameController : MonoBehaviour
 			}
 		}
 	}
+
 	public GameObject[] getControllers()
 	{
 		return controllers;

@@ -19,6 +19,13 @@ public class ControllerInput : MonoBehaviour {
 
 	private GameObject attachedObject;
 
+	private ToggleVR vrToggle;
+
+	void Start()
+	{
+		vrToggle = GameObject.Find ("RequiredPrefab").GetComponent<ToggleVR> ();
+	}
+
 	public void BeginDetectingInput (GameObject[] controllerDevices) 
 	{
 		try
@@ -42,7 +49,7 @@ public class ControllerInput : MonoBehaviour {
 	}
 	public GameObject DetectInput () 
 	{
-		if (!GameController.noVR) 
+		if (vrToggle.vrActive) 
 		{
 			padLocation = new Vector2 (devices [0].getX (), devices [0].getY ());
 			for (int x = 0; x < controllers.Length; x++) 
@@ -143,7 +150,7 @@ public class ControllerInput : MonoBehaviour {
 				}
 				GameObject hitObject = hit.transform.gameObject;
 				Transform spawnOrigin = GameController.FPSController.transform;
-				if (!GameController.noVR) {
+				if (vrToggle.vrActive) {
 					spawnOrigin = controllers [1].transform;
 				}
 				GameObject spawnableObject = null;//hitObject.GetComponent<UserInterface_Object>().obtainObject();

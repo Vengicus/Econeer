@@ -1,0 +1,15 @@
+Suburbs,Description,30,100,-30,50,4
+Apartments,Description,10,150,-50,20,1
+Mansions,Description,20,5,-10,5,1
+City,Description,0,500,-100,50,4
+Solar Farm,Description,10,0,5,0,4
+Wind Farm,Description,15,0,10,0,4
+Hydro Plant,Description,100,0,30,0,4
+Coal Plant,Description,25,0,30,-50,4
+Nuclear Plant,Description,40,0,40,-25,4
+Roads,Description,5,0,0,0,1
+Park,Description,5,0,0,100,1
+Mall,Description,20,0,-20,50,4
+Farm,Description,15,0,-5,100,1
+Energy Storage,Description,40,0,0,25,4
+Government Building,Description,50,0,-20,25,4
