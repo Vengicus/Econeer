@@ -1,14 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\UI_Interaction.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\DetectTime.cs">
     <Files>
-      <File FileName="Assets\Scripts\GameController.cs" Line="52" Column="8" />
-      <File FileName="Assets\Scripts\ObtainInput.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Constrain_Rotation.cs" Line="57" Column="6" />
-      <File FileName="Assets\Scripts\UI_Interaction.cs" Line="23" Column="70" />
-      <File FileName="Assets\Scripts\ControllerInput.cs" Line="155" Column="6" />
-      <File FileName="Assets\Scripts\grid.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ToggleVR.cs" Line="24" Column="12" />
+      <File FileName="Assets\Scripts\DetectTime.js" Line="19" Column="1" />
+      <File FileName="Assets\Scripts\DetectTime.cs" Line="27" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
