@@ -20,6 +20,7 @@ public class ToggleVR : MonoBehaviour {
 	private GameObject VRTK_Obj;
 	private GameObject VRTK_UI_Obj;
 	private GameObject eventSystem;
+	private GameObject player;
 	// Use this for initialization
 	void Awake ()
     {
@@ -29,6 +30,8 @@ public class ToggleVR : MonoBehaviour {
 		VRTK_Obj = GameObject.Find ("[VRTK]");
 		VRTK_UI_Obj = GameObject.Find ("VRTK_UI");
 		eventSystem = GameObject.Find ("EventSystem");
+		player = GameObject.Find ("FirstPersonCharacter");
+
         Transform parentTrans;
 		if(vrActive)
         {
@@ -47,6 +50,7 @@ public class ToggleVR : MonoBehaviour {
             vrRig.SetActive(false);
             fpsRig.SetActive(true);
             parentTrans = fpsRig.transform;
+			player.GetComponent<Camera> ().fieldOfView = 60;
         }
 		uiRingContainer.transform.SetParent(parentTrans);
     }

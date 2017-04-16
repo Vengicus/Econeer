@@ -9,9 +9,15 @@ public class DetectTime : MonoBehaviour {
 	float minutes;
 	//float hours;
 	public Text timePlayed;
+	public Text endOfTurn;
 
+
+
+	void start(){
+		
+	}
 	void Update(){
-
+		
 		seconds += Time.deltaTime;
 
 		if (seconds >= 60) {
@@ -22,6 +28,13 @@ public class DetectTime : MonoBehaviour {
 		if (minutes >= 60) {
 			//hours += 1;
 			minutes = 0;
+		}
+
+		if ((int)minutes == 3) {
+			endOfTurn.text = "END OF SESSION";
+			Time.timeScale = 0;
+
+			
 		}
 		//timePlayed.text = ("M: " + minutes + " S: " + (int)seconds);
 		timePlayed.text = (minutes + ":" + (int)seconds);
