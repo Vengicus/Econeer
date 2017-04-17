@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
 {
 	Object [] inventoryAssets;
 	private EyeRaycasting eyeCaster;
-	public grid gridSystem;
+	private grid gridSystem;
 	private ControllerInput controllerInputManager;
 	private UI_Interaction uiInteraction;
 	private List<Inventory_Object> inventory;
@@ -15,18 +15,21 @@ public class GameController : MonoBehaviour
 	private ToggleVR vrToggle;
 
 	public GameObject[] controllers;
-	public GameObject camera;
-	public GameObject inventoryPrefab;
+	private GameObject camera;
 	public GameObject[,] objectsOnGrid;
 	private GameObject interactionTransform;
 	public static GameObject FPSController;
 
 	private Vector2 previousTile;
 	private bool controllersFound;
+	private GameObject world;
+	private WorldSelection worldSelection;
 
 	void Start () 
 	{
 		vrToggle = GameObject.Find ("RequiredPrefab").GetComponent<ToggleVR> ();
+		world = GameObject.Find ("WorldSelector");
+		worldSelection = world.GetComponent<WorldSelection> ();
 		inventory = new List<Inventory_Object> ();
 		inventoryAssets = Resources.LoadAll("BuildingIcons", typeof(Texture2D));
 
@@ -48,11 +51,13 @@ public class GameController : MonoBehaviour
 		if (vrToggle.vrActive) 
 		{
 			interactionTransform = controllers [1];
+			camera = GameObject.Find ("Camera (eye)");
 		} 
 		else 
 		{
 			interactionTransform = GameObject.Find("FirstPersonCharacter") as GameObject;
 			GameController.FPSController = GameObject.Find("FirstPersonCharacter") as GameObject;
+			camera = GameController.FPSController;
 		}
 	}
 	
@@ -94,16 +99,37 @@ public class GameController : MonoBehaviour
 		}
 		uiInteraction.InitializeUI ();
 		handleUI ();
+		handleWorldSelect ();
 	}
 	void handleUI()
 	{
-		GameObject castedElement = eyeCaster.closestUIElement (camera);
+		GameObject castedElement = eyeCaster.closestUIElement (camera, "UI");
 		if (castedElement != null) 
 		{
 			if (castedElement.name.ToLower ().Contains ("icon")) 
 			{
 				Debug.Log (castedElement.name);
 				uiInteraction.toggleUIElement (castedElement);
+			}
+		}
+	}
+	void handleWorldSelect()
+	{
+		Dictionary<int, GameObject> highlightInfo = eyeCaster.highlightedTri (camera, "SelectableWorldSection");
+		if (highlightInfo != null) 
+		{
+			int triIndex = -1;
+			GameObject hitObj = null;
+			foreach (KeyValuePair<int, GameObject> info in highlightInfo) 
+			{
+				triIndex = info.Key;
+				hitObj = info.Value;
+			}
+			if (triIndex >= 0) 
+			{
+				Debug.Log (triIndex + "  ||  " + hitObj.name);
+				MeshSelection meshSelect = hitObj.GetComponent<MeshSelection> ();
+				meshSelect.highlightSelection (triIndex);
 			}
 		}
 	}

@@ -56,7 +56,9 @@ ENDCG
 
 
 Subshader {
-	Tags { "RenderType"="Opaque" }
+	Tags { "Queue" = "Transparent" }
+	Blend SrcAlpha OneMinusSrcAlpha
+	ColorMask RGB
 	Pass {
 
 CGPROGRAM
