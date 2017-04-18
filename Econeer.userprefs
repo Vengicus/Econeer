@@ -1,11 +1,11 @@
-﻿<Properties StartupItem="Econeer.CSharp.Plugins.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ToggleVR.cs">
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\rotate.js">
     <Files>
-      <File FileName="Assets\Scripts\DetectTime.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\DetectTime.cs" Line="27" Column="34" />
+      <File FileName="Assets\Scripts\DetectTime.cs" Line="33" Column="24" />
       <File FileName="Assets\Scripts\grid.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ToggleVR.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\rotate.js" Line="12" Column="54" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
