@@ -58,11 +58,13 @@
      <Compile Include="Assets\Scripts\Inventory_Object.cs" />
      <Compile Include="Assets\Scripts\JSON_Management.cs" />
      <Compile Include="Assets\Scripts\LevelEditor.cs" />
+     <Compile Include="Assets\Scripts\MeshSelection.cs" />
      <Compile Include="Assets\Scripts\ObtainInput.cs" />
      <Compile Include="Assets\Scripts\PlotTiler.cs" />
      <Compile Include="Assets\Scripts\RotateAround.cs" />
      <Compile Include="Assets\Scripts\ToggleVR.cs" />
      <Compile Include="Assets\Scripts\UI_Interaction.cs" />
+     <Compile Include="Assets\Scripts\WorldSelection.cs" />
      <Compile Include="Assets\Scripts\grid.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
@@ -388,9 +390,12 @@
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
  <HintPath>C:/Users/MagicUser/Documents/Unity 5.5.0f3/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+<<<<<<< HEAD
  </Reference>
  <Reference Include="UnityEngine.Purchasing">
  <HintPath>C:/Users/MagicUser/Documents/Unity 5.5.0f3/Unity/Editor/Data/UnityExtensions/Unity/UnityPurchasing/UnityEngine.Purchasing.dll</HintPath>
+=======
+>>>>>>> d0fa169d9c87c5e0173182e2088cee557668436b
  </Reference>
  <Reference Include="UnityEngine.VR">
  <HintPath>C:/Users/MagicUser/Documents/Unity 5.5.0f3/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>

@@ -31,7 +31,10 @@ public class ToggleVR : MonoBehaviour {
 		VRTK_UI_Obj = GameObject.Find ("VRTK_UI");
 		eventSystem = GameObject.Find ("EventSystem");
 		player = GameObject.Find ("FirstPersonCharacter");
+<<<<<<< HEAD
 
+=======
+>>>>>>> d0fa169d9c87c5e0173182e2088cee557668436b
         Transform parentTrans;
 		if(vrActive)
         {

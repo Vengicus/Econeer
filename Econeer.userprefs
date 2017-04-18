@@ -1,11 +1,24 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\rotate.js">
     <Files>
       <File FileName="Assets\Scripts\DetectTime.cs" Line="33" Column="24" />
       <File FileName="Assets\Scripts\grid.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ToggleVR.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\rotate.js" Line="12" Column="54" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader">
+    <Files>
+      <File FileName="Assets\Scripts\DetectTime.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ToggleVR.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\EyeRaycasting.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\WorldSelection.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MeshSelection.cs" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Environment\Water (Basic)\Scripts\WaterBasic.cs" Line="19" Column="24" />
+      <File FileName="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" Line="61" Column="2" />
+>>>>>>> d0fa169d9c87c5e0173182e2088cee557668436b
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

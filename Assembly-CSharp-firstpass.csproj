@@ -143,9 +143,12 @@
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
  <HintPath>C:/Users/MagicUser/Documents/Unity 5.5.0f3/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+<<<<<<< HEAD
  </Reference>
  <Reference Include="UnityEngine.Purchasing">
  <HintPath>C:/Users/MagicUser/Documents/Unity 5.5.0f3/Unity/Editor/Data/UnityExtensions/Unity/UnityPurchasing/UnityEngine.Purchasing.dll</HintPath>
+=======
+>>>>>>> d0fa169d9c87c5e0173182e2088cee557668436b
  </Reference>
  <Reference Include="UnityEngine.VR">
  <HintPath>C:/Users/MagicUser/Documents/Unity 5.5.0f3/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
