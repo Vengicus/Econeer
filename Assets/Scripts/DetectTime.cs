@@ -9,6 +9,7 @@ public class DetectTime : MonoBehaviour {
 	float minutes;
 	//float hours;
 	public Text timePlayed;
+	public Text gameOverText;
 
 	void Update(){
 
@@ -19,9 +20,10 @@ public class DetectTime : MonoBehaviour {
 			seconds = 0;
 		}
 
-		if (minutes >= 60) {
+		if (minutes >= 3) {
 			//hours += 1;
-			minutes = 0;
+			Time.timeScale = 0;
+			gameOverText.text = "SESSION OVER!";
 		}
 		//timePlayed.text = ("M: " + minutes + " S: " + (int)seconds);
 		timePlayed.text = (minutes + ":" + (int)seconds);
