@@ -9,5 +9,5 @@ function Start () {
 }
 
 function Update () {
-	transform.RotateAround(target.position, Vector3.up,orbitSpeed * Time.deltaTime);
+	transform.RotateAround(target.position, Vector3.up, orbitSpeed * Time.deltaTime);
 }
