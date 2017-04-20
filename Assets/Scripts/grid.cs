@@ -29,8 +29,9 @@ public class grid : MonoBehaviour
 		}
 		blockSize = plotGrid [0, 0].transform.localScale.x;
 	}
-	public Vector2 DetectGridHover(Transform controllerTranform)
+	public Vector2[] DetectGridHover(Transform controllerTranform, int tileSize)
 	{
+		Vector2[] returnVector = new Vector2[16];
 		Vector3 fwd = transform.TransformDirection(controllerTranform.forward);
 		Debug.DrawRay (controllerTranform.position, fwd, Color.green);
 		RaycastHit hit;
@@ -42,14 +43,36 @@ public class grid : MonoBehaviour
 				{
 					if (hit.transform.position == plotGrid [x, z].transform.position) 
 					{
-						return new Vector2 (x, z);
+						List<int[]> adjacentIndeces = new List<int[]> ();
+						if (tileSize > 1) 
+						{
+							for (int i = 1; i < tileSize / 2; i++) 
+							{
+								adjacentIndeces.Add (new int[] { x - i, z - i });
+								adjacentIndeces.Add (new int[] { x - i, z + i });
+								adjacentIndeces.Add (new int[] { x + i, z - i });
+								adjacentIndeces.Add (new int[] { x + i, z + i });
+								adjacentIndeces.Add (new int[] { x + i, z});
+								adjacentIndeces.Add (new int[] { x - i, z});
+								adjacentIndeces.Add (new int[] { x, z + i});
+								adjacentIndeces.Add (new int[] { x, z - i});
+							}
+							returnVector = new Vector2[adjacentIndeces.Count];
+							for(int i = 0; i < adjacentIndeces.Count; i++)
+							{
+								returnVector [i] = new Vector2 (adjacentIndeces [i] [0], adjacentIndeces [i] [1]);
+							}
+							return returnVector;
+						}
+						return new Vector2[] { new Vector2 (x, z) };
 					}
 				}
 			}
 		}
 
-		return new Vector2 (-1, -1);
+		return returnVector;
 	}
+
 	public void HighlightTile(Vector2 position, bool highlight)
 	{
 		Renderer renderer = plotGrid [(int)position.x, (int)position.y].GetComponent<Renderer> ();

@@ -17,7 +17,8 @@ public class ControllerInput : MonoBehaviour {
 	private SteamVR_TrackedObject[] trackedObjects;
 	private ObtainInput[] devices = new ObtainInput[2];
 
-	private GameObject attachedObject;
+	public GameObject attachedObject;
+	public int attachedObjectSize;
 
 	private ToggleVR vrToggle;
 
@@ -153,12 +154,14 @@ public class ControllerInput : MonoBehaviour {
 				if (vrToggle.vrActive) {
 					spawnOrigin = controllers [1].transform;
 				}
-				GameObject spawnableObject = null;//hitObject.GetComponent<UserInterface_Object>().obtainObject();
+				GameObject spawnableObject = hitObject.GetComponentInParent<UIElement> ().SpawnablePrefab;
+				int tileSize = hitObject.GetComponentInParent<UIElement> ().TileSize;
 				Vector3 spawnPos = new Vector3 (spawnOrigin.position.x, spawnOrigin.position.y, spawnOrigin.position.z);
 				attachedObject = (GameObject)Instantiate (spawnableObject, spawnPos, Quaternion.identity);
 				attachedObject.name = "TestObject";
 				attachedObject.transform.parent = spawnOrigin;
-				attachedObject.transform.localScale = new Vector3 (0.08f, 0.08f, 0.08f);
+				attachedObject.transform.localScale = new Vector3 (0.08f * tileSize , 0.08f * tileSize, 0.08f * tileSize);
+
 				StartCoroutine ("CollapseUI");
 				//attachedObject.transform.position = controllers [1].transform.forward;
 			} 
