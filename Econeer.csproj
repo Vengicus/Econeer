@@ -86,16 +86,25 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Constrain_Rotation.cs" />
     <Compile Include="Assets\Scripts\ControllerInput.cs" />
+    <Compile Include="Assets\Scripts\Data\LoadData.cs" />
+    <Compile Include="Assets\Scripts\DetectTime.cs" />
     <Compile Include="Assets\Scripts\EyeRaycasting.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\HeadTracking.cs" />
     <Compile Include="Assets\Scripts\Inventory.cs" />
     <Compile Include="Assets\Scripts\InventoryList.cs" />
+    <Compile Include="Assets\Scripts\Inventory_Object.cs" />
+    <Compile Include="Assets\Scripts\JSON_Management.cs" />
     <Compile Include="Assets\Scripts\LevelEditor.cs" />
+    <Compile Include="Assets\Scripts\MeshSelection.cs" />
     <Compile Include="Assets\Scripts\ObtainInput.cs" />
     <Compile Include="Assets\Scripts\PlotTiler.cs" />
+    <Compile Include="Assets\Scripts\RotateAround.cs" />
+    <Compile Include="Assets\Scripts\ToggleVR.cs" />
     <Compile Include="Assets\Scripts\UI_Interaction.cs" />
+    <Compile Include="Assets\Scripts\WorldSelection.cs" />
     <Compile Include="Assets\Scripts\grid.cs" />
+    <Compile Include="Assets\Scripts\spawnPrefab.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_Teleporter.cs" />
@@ -398,6 +407,7 @@
     <None Include="Assets\SteamVR\Resources\SteamVR_Fade.shader" />
     <None Include="Assets\SteamVR\Resources\SteamVR_SphericalProjection.shader" />
     <None Include="Assets\SteamVR\readme.txt" />
+    <None Include="Assets\StreamingAssets\buildingData.txt" />
     <None Include="Assets\VRTK\Scripts\Internal\Shaders\AdaptiveQualityDebugVisualization.shader" />
     <None Include="Assets\VRTK\Scripts\Internal\Shaders\TransparentFresnelBehind.shader" />
     <None Include="Assets\VRTK\Scripts\Internal\Shaders\UIOverlay.shader" />
