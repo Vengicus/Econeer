@@ -1,0 +1,138 @@
+fileFormatVersion: 2
+guid: d868fa64b920fa543a1e9226d255f8ec
+timeCreated: 1492907510
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: blade_shape_0_1
+    100004: blade_shape_0_1_2
+    100006: blade_shape_0_1_3
+    100008: blade_shape_0_1_4
+    100010: blade_shape_0_1_5
+    100012: Blades
+    100014: Blades_2
+    100016: Blades_3
+    100018: Blades_4
+    100020: Blades_5
+    100022: Capsule
+    100024: greens
+    100026: Rocks
+    100028: Trees
+    100030: trunks
+    100032: Wind_Turbines
+    400000: //RootNode
+    400002: blade_shape_0_1
+    400004: blade_shape_0_1_2
+    400006: blade_shape_0_1_3
+    400008: blade_shape_0_1_4
+    400010: blade_shape_0_1_5
+    400012: Blades
+    400014: Blades_2
+    400016: Blades_3
+    400018: Blades_4
+    400020: Blades_5
+    400022: Capsule
+    400024: greens
+    400026: Rocks
+    400028: Trees
+    400030: trunks
+    400032: Wind_Turbines
+    2300000: blade_shape_0_1
+    2300002: blade_shape_0_1_2
+    2300004: blade_shape_0_1_3
+    2300006: blade_shape_0_1_4
+    2300008: blade_shape_0_1_5
+    2300010: Capsule
+    2300012: greens
+    2300014: Rocks
+    2300016: trunks
+    3300000: blade_shape_0_1
+    3300002: blade_shape_0_1_2
+    3300004: blade_shape_0_1_3
+    3300006: blade_shape_0_1_4
+    3300008: blade_shape_0_1_5
+    3300010: Capsule
+    3300012: greens
+    3300014: Rocks
+    3300016: trunks
+    4300000: blade_shape_0_1
+    4300002: blade_shape_0_1_2
+    4300004: blade_shape_0_1_3
+    4300006: blade_shape_0_1_4
+    4300008: blade_shape_0_1_5
+    4300010: Capsule
+    4300012: greens
+    4300014: trunks
+    4300016: Rocks
+    7400000: C4D Animation Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
