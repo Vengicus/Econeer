@@ -49,4 +49,14 @@ public class Menu_Options : MonoBehaviour {
 		}
 
 	}
+
+	[MenuItem("GameObject/Create Empty in Child #&n")]
+	static void CreateEmptyObjInChild()
+	{
+		GameObject go = new GameObject ("GameObject");
+		if (Selection.activeTransform != null) 
+		{
+			go.transform.parent = Selection.activeTransform;
+		}
+	}
 }

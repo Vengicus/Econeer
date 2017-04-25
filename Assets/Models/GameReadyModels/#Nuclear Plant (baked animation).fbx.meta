@@ -1,0 +1,209 @@
+fileFormatVersion: 2
+guid: 9b00b6346ea90754aa4817d5d1601795
+timeCreated: 1493090822
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: accent
+    100004: accent_2
+    100006: accent_3
+    100008: accent_4
+    100010: accents
+    100012: bushes
+    100014: Capsule
+    100016: dark_grey_base
+    100018: dark_grey_base_2
+    100020: dark_grey_base_3
+    100022: dark_grey_base_4
+    100024: dark_grey_top
+    100026: grey_mid_top
+    100028: grey_pipes
+    100030: Main_Building
+    100032: Nuclear_Stack_1
+    100034: Nuclear_Stack_2
+    100036: Nuclear_Stack_3
+    100038: orange_pipes
+    100040: smoke_1
+    100042: smoke_2
+    100044: smoke_3
+    100046: tall_pipes
+    100048: white_base
+    100050: white_base_2
+    100052: white_pipe
+    100054: white_pipe_2
+    100056: white_pipe_3
+    100058: windows
+    400000: //RootNode
+    400002: accent
+    400004: accent_2
+    400006: accent_3
+    400008: accent_4
+    400010: accents
+    400012: bushes
+    400014: Capsule
+    400016: dark_grey_base
+    400018: dark_grey_base_2
+    400020: dark_grey_base_3
+    400022: dark_grey_base_4
+    400024: dark_grey_top
+    400026: grey_mid_top
+    400028: grey_pipes
+    400030: Main_Building
+    400032: Nuclear_Stack_1
+    400034: Nuclear_Stack_2
+    400036: Nuclear_Stack_3
+    400038: orange_pipes
+    400040: smoke_1
+    400042: smoke_2
+    400044: smoke_3
+    400046: tall_pipes
+    400048: white_base
+    400050: white_base_2
+    400052: white_pipe
+    400054: white_pipe_2
+    400056: white_pipe_3
+    400058: windows
+    2300000: accent
+    2300002: accent_2
+    2300004: accent_3
+    2300006: accent_4
+    2300008: accents
+    2300010: bushes
+    2300012: dark_grey_base
+    2300014: dark_grey_base_2
+    2300016: dark_grey_base_3
+    2300018: dark_grey_base_4
+    2300020: dark_grey_top
+    2300022: grey_mid_top
+    2300024: grey_pipes
+    2300026: orange_pipes
+    2300028: smoke_1
+    2300030: smoke_2
+    2300032: smoke_3
+    2300034: tall_pipes
+    2300036: white_base
+    2300038: white_base_2
+    2300040: white_pipe
+    2300042: white_pipe_2
+    2300044: white_pipe_3
+    2300046: windows
+    3300000: accent
+    3300002: accent_2
+    3300004: accent_3
+    3300006: accent_4
+    3300008: accents
+    3300010: bushes
+    3300012: dark_grey_base
+    3300014: dark_grey_base_2
+    3300016: dark_grey_base_3
+    3300018: dark_grey_base_4
+    3300020: dark_grey_top
+    3300022: grey_mid_top
+    3300024: grey_pipes
+    3300026: orange_pipes
+    3300028: smoke_1
+    3300030: smoke_2
+    3300032: smoke_3
+    3300034: tall_pipes
+    3300036: white_base
+    3300038: white_base_2
+    3300040: white_pipe
+    3300042: white_pipe_2
+    3300044: white_pipe_3
+    3300046: windows
+    4300000: smoke_3
+    4300002: smoke_2
+    4300004: smoke_1
+    4300006: white_pipe
+    4300008: dark_grey_base
+    4300010: accent
+    4300012: white_pipe_2
+    4300014: dark_grey_base_2
+    4300016: accent_2
+    4300018: white_pipe_3
+    4300020: dark_grey_base_3
+    4300022: accent_3
+    4300024: accent_4
+    4300026: white_base
+    4300028: dark_grey_base_4
+    4300030: grey_pipes
+    4300032: windows
+    4300034: bushes
+    4300036: dark_grey_top
+    4300038: grey_mid_top
+    4300040: white_base_2
+    4300042: tall_pipes
+    4300044: accents
+    4300046: orange_pipes
+    7400000: C4D Animation Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

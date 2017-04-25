@@ -7,15 +7,20 @@ public class grid : MonoBehaviour
 	public GameObject plane;
 	private Vector2 size = new Vector2 ();
 	private float blockSize;
-	private GameObject [,] plotGrid;
+	private GameObject [][] plotGrid;
 
+	private bool exists = false;
+	public Material highlightMaterial;
+	public Material unhighlightMaterial;
 	public void BuildGrid(Vector2 plotSize)
 	{
 		size = plotSize;
-		plotGrid = new GameObject[(int)size.x, (int)size.y];
-		for (int x = 0; x < size.x; x++) 
+		Debug.Log (size.y);
+		plotGrid = new GameObject[(int)size.x][];
+		for (int x = 0; x < plotGrid.Length; x++) 
 		{
-			for (int z = 0; z < size.y; z++) 
+			plotGrid [x] = new GameObject[(int)size.y];
+			for (int z = 0; z < plotGrid[x].Length; z++) 
 			{
 				GameObject gridPlane = (GameObject)Instantiate (plane);
 				gridPlane.transform.parent = GameObject.Find ("Grid").transform as Transform;
@@ -24,47 +29,43 @@ public class grid : MonoBehaviour
 				gridPlane.name = "Tile (" + x + ", " + z + ")";
 				gridPlane.transform.position = new Vector3 (gridPlane.transform.position.x + x,
 					gridPlane.transform.position.y, gridPlane.transform.position.z + z);
-				plotGrid [x, z] = gridPlane;
+				plotGrid [x][z] = gridPlane;
 			}
 		}
-		blockSize = plotGrid [0, 0].transform.localScale.x;
+		blockSize = plotGrid [0][0].transform.localScale.x;
+		exists = true;
 	}
-	public Vector2[] DetectGridHover(Transform controllerTranform, int tileSize)
+	public void ClearGrid()
 	{
-		Vector2[] returnVector = new Vector2[16];
+		for (int x = 0; x < plotGrid.Length; x++) 
+		{
+			for (int z = 0; z < plotGrid [x].Length; z++) 
+			{
+				Destroy (plotGrid [x] [z]);
+			}
+		}
+		plotGrid = null;
+		exists = false;
+	}
+	public bool PlotGridExists()
+	{
+		return exists;
+	}
+	public Vector2 DetectGridHover(Transform controllerTranform, int tileSize)
+	{
+		Vector2 returnVector = Vector3.zero;
 		Vector3 fwd = transform.TransformDirection(controllerTranform.forward);
 		Debug.DrawRay (controllerTranform.position, fwd, Color.green);
 		RaycastHit hit;
 		if (Physics.Raycast (controllerTranform.position, fwd, out hit)) 
 		{
-			for (int x = 0; x < size.x; x++)
+			for (int x = 0; x < plotGrid.Length; x++)
 			{
-				for (int z = 0; z < size.y; z++) 
+				for (int z = 0; z < plotGrid[x].Length; z++) 
 				{
-					if (hit.transform.position == plotGrid [x, z].transform.position) 
+					if (hit.transform.position == plotGrid [x][z].transform.position) 
 					{
-						List<int[]> adjacentIndeces = new List<int[]> ();
-						if (tileSize > 1) 
-						{
-							for (int i = 1; i < tileSize / 2; i++) 
-							{
-								adjacentIndeces.Add (new int[] { x - i, z - i });
-								adjacentIndeces.Add (new int[] { x - i, z + i });
-								adjacentIndeces.Add (new int[] { x + i, z - i });
-								adjacentIndeces.Add (new int[] { x + i, z + i });
-								adjacentIndeces.Add (new int[] { x + i, z});
-								adjacentIndeces.Add (new int[] { x - i, z});
-								adjacentIndeces.Add (new int[] { x, z + i});
-								adjacentIndeces.Add (new int[] { x, z - i});
-							}
-							returnVector = new Vector2[adjacentIndeces.Count];
-							for(int i = 0; i < adjacentIndeces.Count; i++)
-							{
-								returnVector [i] = new Vector2 (adjacentIndeces [i] [0], adjacentIndeces [i] [1]);
-							}
-							return returnVector;
-						}
-						return new Vector2[] { new Vector2 (x, z) };
+						return new Vector2 (x, z);
 					}
 				}
 			}
@@ -75,24 +76,24 @@ public class grid : MonoBehaviour
 
 	public void HighlightTile(Vector2 position, bool highlight)
 	{
-		Renderer renderer = plotGrid [(int)position.x, (int)position.y].GetComponent<Renderer> ();
+		Renderer renderer = plotGrid [(int)position.x][(int)position.y].GetComponent<Renderer> ();
 		if (highlight) 
 		{
-			renderer.material.color = Color.cyan;
+			renderer.material = highlightMaterial;
 		} 
 		else 
 		{
-			renderer.material.color = Color.white;
+			renderer.material = unhighlightMaterial;
 		}
 	}
 	public Vector3 HoveredTilePosition(Vector2 index)
 	{
-		Vector3 tilePos = plotGrid [(int)index.x, (int)index.y].transform.position;
+		Vector3 tilePos = plotGrid [(int)index.x][(int)index.y].transform.position;
 		return new Vector3 (tilePos.x, tilePos.y + 0.05f, tilePos.z);
 	}
 	public GameObject HoveredTileObject(Vector2 index)
 	{
-		return plotGrid [(int)index.x, (int)index.y].gameObject;
+		return plotGrid [(int)index.x][(int)index.y].gameObject;
 	}
 
 	/*void OnGUI()

@@ -16,32 +16,41 @@ public class GameController : MonoBehaviour
 
 	public GameObject[] controllers;
 	private GameObject camera;
-	public GameObject[,] objectsOnGrid;
+	public GameObject[][] objectsOnGrid;
 	public List<int[]> objectsOnGridLocations;
 	private GameObject interactionTransform;
 	public static GameObject FPSController;
 
-	private Vector2[] previousTiles;
+	private Vector2 previousTiles;
 	private bool controllersFound;
 	private GameObject world;
 	private WorldSelection worldSelection;
 
 	public GameObject placeholder;
+	private GameObject previousHighlight = null;
+	private Animator worldAnimator;
 
-	private Dictionary<int, PlotData> plots = new Dictionary<int, PlotData> ();
+	private GameObject endSessionButton;
+	private string currentPlotName;
+
+	private MeshSelection meshSelect;
+	public string creatorName = "Noah";
 
 	void Start () 
 	{
 		vrToggle = GameObject.Find ("RequiredPrefab").GetComponent<ToggleVR> ();
 		world = GameObject.Find ("WorldSelector");
 		worldSelection = world.GetComponent<WorldSelection> ();
-		plots = new Dictionary<int, PlotData> ();
+		worldAnimator = world.GetComponent<Animator> ();
+		endSessionButton = GameObject.Find ("EndSessionButton");
+		endSessionButton.SetActive (false);
 		inventory = new List<Inventory_Object> ();
 		objectsOnGridLocations = new List<int[]> ();
+		meshSelect = GameObject.Find ("Selectable_Areas").GetComponent<MeshSelection> ();
 
 
 		gridSystem = this.gameObject.GetComponent<grid>();
-		gridSystem.BuildGrid (new Vector2 (4, 4));
+
 		controllerInputManager = this.gameObject.GetComponent<ControllerInput>();
 		controllerInputManager.BeginDetectingInput(controllers);
 
@@ -65,36 +74,28 @@ public class GameController : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		Vector2 [] hoveredTiles = gridSystem.DetectGridHover (interactionTransform.transform, controllerInputManager.attachedObjectSize);
-		if (hoveredTiles.Length > 0) 
-		{
-			if (previousTiles != null) 
-			{
-				foreach (Vector2 tile in previousTiles) 
-				{
-					gridSystem.HighlightTile (tile, false);
+		if (gridSystem.PlotGridExists ()) {
+			Vector2 hoveredTiles = gridSystem.DetectGridHover (interactionTransform.transform, controllerInputManager.attachedObjectSize);
+			if (hoveredTiles != null) {
+				if (previousTiles != null) {
+					gridSystem.HighlightTile (previousTiles, false);
+					//gridSystem.HighlightTile (previousTiles, false);
 				}
-				//gridSystem.HighlightTile (previousTiles, false);
+				gridSystem.HighlightTile (hoveredTiles, true);
+				previousTiles = hoveredTiles;
 			}
-			foreach (Vector2 tile in hoveredTiles) 
-			{
-				gridSystem.HighlightTile (tile, true);
+
+			GameObject placedObject = controllerInputManager.DetectInput ();
+
+			if (placedObject != null) {
+				placedObject.transform.localScale *= 10;
+				objectsOnGridLocations.Add (new int[] { (int)hoveredTiles.x, (int)hoveredTiles.y });
+				objectsOnGrid [(int)hoveredTiles.x][(int)hoveredTiles.y] = (GameObject)Instantiate (placedObject, gridSystem.HoveredTilePosition (hoveredTiles), Quaternion.identity);
+				objectsOnGrid [(int)hoveredTiles.x][(int)hoveredTiles.y].name = "TestObject";
+				//objectsOnGrid[(int)hoveredTile.x, (int)hoveredTile.y].transform.parent = gridSystem.HoveredTileObject(hoveredTile).transform;
+
 			}
-			previousTiles = hoveredTiles;
 		}
-
-		GameObject placedObject = controllerInputManager.DetectInput ();
-
-		if (placedObject != null) 
-		{
-			placedObject.transform.localScale *= 10;
-			objectsOnGridLocations.Add (new int[] { (int)hoveredTiles [0].x, (int)hoveredTiles [0].y });
-			objectsOnGrid[(int)hoveredTiles[0].x, (int)hoveredTiles[0].y] = (GameObject)Instantiate (placedObject, gridSystem.HoveredTilePosition(hoveredTiles[0]), Quaternion.identity);
-			objectsOnGrid[(int)hoveredTiles[0].x, (int)hoveredTiles[0].y].name = "TestObject";
-			//objectsOnGrid[(int)hoveredTile.x, (int)hoveredTile.y].transform.parent = gridSystem.HoveredTileObject(hoveredTile).transform;
-
-		}
-
 		if (controllersFound == false && controllers != null) 
 		{
 			controllersFound = true;
@@ -105,89 +106,103 @@ public class GameController : MonoBehaviour
 		{
 			
 		}
+
 		uiInteraction.InitializeUI ();
 		handleUI ();
 		handleWorldSelect ();
 	}
 	void handleUI()
 	{
-		GameObject castedElement = eyeCaster.closestUIElement (camera, "UI");
+		GameObject castedElement = eyeCaster.raycastToElement (camera, "UI");
 		if (castedElement != null) 
 		{
 			if (castedElement.name.ToLower ().Contains ("icon")) 
 			{
-				Debug.Log (castedElement.name);
 				uiInteraction.toggleUIElement (castedElement);
+			} 
+			if (castedElement.name.ToLower ().Contains ("session")) 
+			{
+				if (Input.GetMouseButtonUp (0)) 
+				{
+					ClearPlot ();
+
+				}
 			}
 		}
 	}
 	void handleWorldSelect()
 	{
-		Dictionary<int, GameObject> highlightInfo = eyeCaster.highlightedTri (camera, "SelectableWorldSection");
+		
+		GameObject highlightInfo = eyeCaster.raycastToElement (camera, "SelectableWorldSection");
 		if (highlightInfo != null) 
 		{
-			int triIndex = -1;
-			GameObject hitObj = null;
-			foreach (KeyValuePair<int, GameObject> info in highlightInfo) 
+			MeshSelection meshSelect = highlightInfo.transform.parent.parent.GetComponent<MeshSelection> ();
+			//Debug.Log (highlightInfo.name);
+			if (meshSelect != null) 
 			{
-				triIndex = info.Key;
-				hitObj = info.Value;
+				meshSelect.performMeshSelection (highlightInfo, previousHighlight);
 			}
-			if (triIndex >= 0) 
-			{
-				Debug.Log (triIndex + "  ||  " + hitObj.name);
-				MeshSelection meshSelect = hitObj.GetComponent<MeshSelection> ();
-				int selectedTri = meshSelect.highlightSelection (triIndex);
-				if (Input.GetMouseButtonUp (0)) 
-				{
-					Debug.Log ("SAVE");
-					savePlot (triIndex);
-					clearPlot (triIndex);
-				}
-			}
+			previousHighlight = highlightInfo;
 		}
 	}
 
-	void savePlot(int triIndex)
+	public void BuildPlot(GameObject[][] objectsOnPlot, string plotName)
 	{
-		plots [triIndex] = new PlotData (objectsOnGrid, objectsOnGridLocations);
+		currentPlotName = plotName;
+		gridSystem.BuildGrid (new Vector2 (4, 4));
+		worldAnimator.SetBool ("showWorld", false);
+		endSessionButton.SetActive (true);
+		objectsOnGrid = new GameObject[4][];
+		for (int x = 0; x < 4; x++) 
+		{
+			objectsOnGrid[x] = new GameObject[4];
+			for (int y = 0; y < 4; y++) 
+			{
 
-	}
-	void clearPlot(int triIndex)
-	{
-		Debug.Log (triIndex);
-		GameObject firstInstance = null;
-		/*for(int x = 0; x < objectsOnGrid.Length; x++) 
-		{
-			for (int z = 0; z < objectsOnGrid.Length; z++) 
-			{
-				if (objectsOnGrid [x, z] != null) {
-					firstInstance = objectsOnGrid [x, z];
-				}
-				Destroy (objectsOnGrid[x, z]);
-			}
-		}*/
-		//Array.Clear (objectsOnGrid, 0, objectsOnGrid.Length);
-		worldSelection.placePlotOnWorld (placeholder, triIndex);
-	}
-	void plotSelected(int triIndex)
-	{
-		foreach (KeyValuePair<int, PlotData> plot in plots) 
-		{
-			if (plot.Key == triIndex) 
-			{
-				foreach (int[] loc in plot.Value.objectLocations) 
-				{
-					objectsOnGrid [loc[0], loc[1]] = (GameObject)Instantiate (plot.Value.objects[loc[0], loc[1]], gridSystem.HoveredTilePosition (new Vector2(loc[0], loc[1])), Quaternion.identity);
-					objectsOnGrid [loc[0], loc[1]].name = "TestObject";
-				}
 			}
 		}
+		if (objectsOnPlot != null) 
+		{
+			for (int x = 0; x < objectsOnPlot.Length; x++) 
+			{
+				for (int z = 0; z < objectsOnPlot [x].Length; z++) 
+				{
+					if (objectsOnPlot [x] [z] != null) 
+					{
+						objectsOnGrid [x] [z] = Instantiate (objectsOnPlot [x] [z], gridSystem.HoveredTilePosition (new Vector2 (x, z)), Quaternion.identity);
+						objectsOnGrid [x] [z].name = "TestObject";
+					}
+				}
+			}
+		} 
+		else 
+		{
+			
+		}
 	}
+	public void ClearPlot()
+	{
+		worldAnimator.SetBool ("showWorld", true);
+		endSessionButton.SetActive (false);
+		meshSelect.savePlot (objectsOnGrid, currentPlotName, creatorName);
+		for (int x = 0; x < objectsOnGrid.Length; x++) {
+			for (int z = 0; z < objectsOnGrid [x].Length; z++) {
+				Destroy (objectsOnGrid [x] [z]);
+			}
+		}
+		objectsOnGrid = null;
+		gridSystem.ClearGrid ();
+	}
+
 
 	public GameObject[] getControllers()
 	{
 		return controllers;
+	}
+
+	public GameObject [][] obtainGridObjects()
+	{
+		return objectsOnGrid;
 	}
 
 }

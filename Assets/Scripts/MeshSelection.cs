@@ -1,171 +1,126 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class MeshSelection : MonoBehaviour 
 {
-	Mesh meshInfo;
-	private Vector3 [] surfaceNorms;
-	private Vector3 [] verts;
-	private int [] tris;
-	private List<int[]> quads;
-	Dictionary<int, Vector3[]> quadVerts;
-
-
+	private Dictionary<string, PlotData> plots = new Dictionary<string, PlotData>();
+	private Dictionary<string, GameObject> plotObjects = new Dictionary<string, GameObject>();
+	public GameObject creatorCard;
+	public Material highlightedMaterial;
+	public Material unhighlightedMaterial;
+	private GameObject currentPlotCard;
+	private bool plotCardBuilt = false;
+	GameController gameController;
 	void Start()
 	{
-		meshInfo = this.gameObject.GetComponent<MeshFilter>().mesh;
-		verts = meshInfo.vertices;
-		tris = meshInfo.triangles;
-		surfaceNorms = meshInfo.normals;
-		quadVerts = new Dictionary<int, Vector3[]> ();
-		quads = setupQuads ();
+		gameController = GameObject.Find ("GameController").GetComponent<GameController> ();
+		Transform[] childTransforms = this.transform.GetComponentsInChildren<Transform> ();
+		foreach (Transform trans in childTransforms) 
+		{
+			if (!trans.name.ToLower ().Contains ("select") && !trans.name.ToLower ().Contains ("object")) {
+				string plotName = trans.name;
+				MeshCollider col = trans.gameObject.AddComponent <MeshCollider> () as MeshCollider;
+				Mesh mesh = trans.gameObject.GetComponent<MeshFilter> ().mesh;
+				col.sharedMesh = mesh;
+				plotObjects.Add (plotName, trans.gameObject);
+				PlotData newPlot = new PlotData (plotName, "No Creator", creatorCard);
+				plots.Add (plotName, newPlot);
+			}
+		}
+
+	}
+	public void performMeshSelection(GameObject highlighted, GameObject previouslyHighlighted)
+	{
+		string name = highlighted.name;
+		highlighted.GetComponent<Renderer>().material = highlightedMaterial;
+		if (previouslyHighlighted != null) 
+		{
+			if (previouslyHighlighted != highlighted) 
+			{
+				previouslyHighlighted.GetComponent<Renderer> ().material = unhighlightedMaterial;
+				Destroy (currentPlotCard);
+				plotCardBuilt = false;
+			} 
+			else if(previouslyHighlighted == highlighted)
+			{
+				if (plotCardBuilt == false) 
+				{
+					//Debug.Log ("Build Card");
+					Vector3 highlightedPlotPos = Vector3.zero;
+					try
+					{
+						if (highlighted.transform.GetChild(0)) 
+						{
+							Debug.Log ("SELECTABLE");
+							Vector3 pos = highlighted.transform.GetChild(0).transform.position;
+							pos *= 0.95f;
+							highlightedPlotPos = pos;
+						}
+					}
+					catch
+					{
+						highlightedPlotPos = highlighted.transform.position;
+					}
+					Quaternion highlightedPlotQuat = Quaternion.LookRotation(highlighted.transform.forward);
+					currentPlotCard = Instantiate(plots [name].returnCreatorCard (), highlightedPlotPos, highlightedPlotQuat) as GameObject;
+					//currentPlotCard.transform.SetParent (highlighted.transform);
+					plotCardBuilt = true;
+				}
+			}
+		}
+
+
+		if (Input.GetMouseButtonUp (0)) 
+		{
+			Debug.Log ("SAVE");
+			loadPlot (name);
+		}
 	}
 
-	private List<int[]> setupQuads()
+	public void loadPlot(string plotName)
 	{
-		List<int[]> tempQuadLayout = new List<int[]> ();
-		Dictionary<int, Vector3> tempTriVerts = new Dictionary<int, Vector3> ();
-		for(int x = 0; x < tris.Length - 1; x++) 
+		PlotData selectedPlotData = plots [plotName];
+		if (selectedPlotData.CreatorName == "No Creator") 
 		{
-			Vector3 p0 = verts [tris [x / 3 + 0]];
-			Vector3 p1 = verts [tris [x / 3 + 1]];
-			Vector3 p2 = verts [tris [x / 3 + 2]];
-
-			Vector3 hyp = getSharedEdge(new Vector3[]{p0, p1, p2});
-			foreach (KeyValuePair<int, Vector3> tri in tempTriVerts) 
+			gameController.BuildPlot (null, plotName);
+		} 
+		else 
+		{
+			gameController.BuildPlot (selectedPlotData.returnPlotObjects(), plotName);
+		}
+	}
+	public void savePlot(GameObject[][] objectsOnPlot, string plotName, string creatorName)
+	{
+		PlotData selectedPlotData = plots [plotName];
+		GameObject spawnOnMap = new GameObject();
+		for (int x = 0; x < objectsOnPlot.Length; x++) 
+		{
+			for (int y = 0; y < objectsOnPlot[x].Length; y++) 
 			{
-				if (hyp == tri.Value && tri.Key != x / 3) 
+				if (objectsOnPlot [x] [y] != null) 
 				{
-					tempQuadLayout.Add(new int[]{x / 3, tri.Key});
+					spawnOnMap = objectsOnPlot [x] [y];
 					continue;
 				}
 			}
-			if (!tempTriVerts.ContainsKey(x / 3)) 
-			{
-				tempTriVerts.Add (x / 3, hyp);
-			}
 		}
-		return tempQuadLayout;
-	}
-	public int highlightSelection(int triangleIndex)
-	{
-		int[] matchedPair = new int[2];
-		foreach (int[] pairs in quads) 
+		selectedPlotData.savePlotData (objectsOnPlot, creatorName);
+		selectedPlotData.printObjectNames ();
+		try
 		{
-			if (pairs [0] == triangleIndex || pairs [1] == triangleIndex) 
+			if (plotObjects[plotName].transform.GetChild(0)) 
 			{
-				matchedPair = pairs;
+				Debug.Log("Spawn On Plot");
+				Vector3 pos = plotObjects[plotName].transform.GetChild(0).transform.position;
+				spawnOnMap = Instantiate(spawnOnMap, pos, plotObjects[plotName].transform.GetChild(0).transform.rotation) as GameObject;
+				spawnOnMap.transform.SetParent(plotObjects[plotName].transform);
+				spawnOnMap.transform.localScale *= 0.07f;
 			}
 		}
-
-		Debug.Log (matchedPair [0] + "  ||  " + matchedPair [1]);
-		Vector3 p0 = verts [tris [matchedPair[0] * 3 + 0]];
-		Vector3 p1 = verts [tris [matchedPair[0] * 3 + 1]];
-		Vector3 p2 = verts [tris [matchedPair[0] * 3 + 2]];
-
-		/*int secondIndex = getNeighborIndex (new List<Vector3>{p0, p1, p2}, triangleIndex);*/
-		Vector3 P0 = verts [tris [matchedPair[1] * 3 + 0]];
-		Vector3 P1 = verts [tris [matchedPair[1] * 3 + 1]];
-		Vector3 P2 = verts [tris [matchedPair[1] * 3 + 2]];
-		p0 = this.GetComponent<Collider>().transform.TransformPoint (p0);
-		p1 = this.GetComponent<Collider>().transform.TransformPoint (p1);
-		p2 = this.GetComponent<Collider>().transform.TransformPoint (p2);
-
-
-
-
-		//Debug.Log (p0 + "  ||  " + p1 + "  ||  " + p2);
-		P0 = this.GetComponent<Collider>().transform.TransformPoint (P0);
-		P1 = this.GetComponent<Collider>().transform.TransformPoint (P1);
-		P2 = this.GetComponent<Collider>().transform.TransformPoint (P2);
-		Debug.DrawLine (p0, p1);
-		Debug.DrawLine (p1, p2);
-		Debug.DrawLine (p2, p0);
-
-		Debug.DrawLine (P0, P1);
-		Debug.DrawLine (P1, P2);
-		Debug.DrawLine (P2, P0);
-
-		return triangleIndex;
-	}
-	private Vector3 getSharedEdge(Vector3[] verts)
-	{
-		Vector3 opp = verts[2] - verts[0];
-		Vector3 adj = verts[1] - verts[0];
-		Vector3 hyp = opp - adj;
-		return hyp;
-	}
-
-	private int getNeighborIndex(List<Vector3> neighboringVerts, int triIndex)
-	{
-		List<int> adjacentTris = new List<int> ();
-		List<Vector3> matchingVerts = new List<Vector3> ();
-		Vector3 matchingVert = Vector3.zero;
-		int numberMatch = 0;
-		for (int x = 0; x < neighboringVerts.Count; x++) 
+		catch 
 		{
-			if (matchingVert == Vector3.zero) 
-			{
-				matchingVert = neighboringVerts [x];
-				continue;
-			} 
-			else 
-			{
-				if (neighboringVerts [x] == matchingVert) 
-				{
-					numberMatch++;
-				}
-			}
-			if (numberMatch == 0 && x == neighboringVerts.Count - 1) 
-			{
-				matchingVert = neighboringVerts [x];
-			}
-		}
-		for (int x = 0; x < tris.Length; x++) 
-		{
-			Vector3 currentVert = verts [tris [x]];
-			if (currentVert == matchingVert) 
-			{
-				//Debug.Log (currentVert + "     || " + neighboringVerts[0] + "  ||  " + neighboringVerts[1] + "  ||  " + neighboringVerts[2]);
-				matchingVerts.Add (currentVert);
-				if (matchingVerts.Count == 2) 
-				{
-					int triNum = x / 3;
-					if (triNum != triIndex) 
-					{
-						//Debug.Log (triNum);
-						return triNum;
-					}
-				}
-			}
-				/*if (currentVert == neighboringVerts [0] || currentVert == neighboringVerts [1] || currentVert == neighboringVerts [2]) 
-			{
-				int triNum = x / 3;
-				if (triNum != triIndex) 
-				{
-					adjacentTris.Add (triNum);
-				}
-			}*/
-		}
-
-
-		for (int x = 0; x < adjacentTris.Count; x++) 
-		{
-			Vector3 currentVert = verts [tris [adjacentTris[x]]];
-			if (matchingVerts.Count == 2) 
-			{
-
-			}
-
 
 		}
-		return -1;
+
 	}
-	public Vector3 get3DPositionOfTri(int triIndex)
-	{
-		Debug.Log ("Get Norms");
-		return this.transform.position + verts [tris [triIndex]];
-	}
-
 }

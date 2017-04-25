@@ -1,0 +1,177 @@
+fileFormatVersion: 2
+guid: a3b83c0f11b2e924a9a32eda1d0a68a5
+timeCreated: 1493090822
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: accents
+    100004: accents_2
+    100006: connecting_pipes
+    100008: dark_grey_pipe
+    100010: greens
+    100012: grey_base
+    100014: grey_top_panels
+    100016: Main_Building
+    100018: orange_pipes
+    100020: Silos
+    100022: smoke_1
+    100024: smoke_1_1
+    100026: smoke_1_2
+    100028: smoke_1_3
+    100030: smoke_1_4
+    100032: smoke_stack_base
+    100034: Smoke_Stacks
+    100036: smoke_stacks
+    100038: Trees
+    100040: trunks
+    100042: white_base
+    100044: windows
+    400000: //RootNode
+    400002: accents
+    400004: accents_2
+    400006: connecting_pipes
+    400008: dark_grey_pipe
+    400010: greens
+    400012: grey_base
+    400014: grey_top_panels
+    400016: Main_Building
+    400018: orange_pipes
+    400020: Silos
+    400022: smoke_1
+    400024: smoke_1_1
+    400026: smoke_1_2
+    400028: smoke_1_3
+    400030: smoke_1_4
+    400032: smoke_stack_base
+    400034: Smoke_Stacks
+    400036: smoke_stacks
+    400038: Trees
+    400040: trunks
+    400042: white_base
+    400044: windows
+    2300000: accents
+    2300002: accents_2
+    2300004: connecting_pipes
+    2300006: dark_grey_pipe
+    2300008: greens
+    2300010: grey_base
+    2300012: grey_top_panels
+    2300014: orange_pipes
+    2300016: smoke_1
+    2300018: smoke_1_1
+    2300020: smoke_1_2
+    2300022: smoke_1_3
+    2300024: smoke_1_4
+    2300026: smoke_stack_base
+    2300028: smoke_stacks
+    2300030: trunks
+    2300032: white_base
+    2300034: windows
+    3300000: accents
+    3300002: accents_2
+    3300004: connecting_pipes
+    3300006: dark_grey_pipe
+    3300008: greens
+    3300010: grey_base
+    3300012: grey_top_panels
+    3300014: orange_pipes
+    3300016: smoke_1
+    3300018: smoke_1_1
+    3300020: smoke_1_2
+    3300022: smoke_1_3
+    3300024: smoke_1_4
+    3300026: smoke_stack_base
+    3300028: smoke_stacks
+    3300030: trunks
+    3300032: white_base
+    3300034: windows
+    4300000: smoke_1_4
+    4300002: smoke_1_3
+    4300004: smoke_1_2
+    4300006: smoke_1_1
+    4300008: smoke_1
+    4300010: accents
+    4300012: grey_base
+    4300014: dark_grey_pipe
+    4300016: windows
+    4300018: white_base
+    4300020: grey_top_panels
+    4300022: connecting_pipes
+    4300024: orange_pipes
+    4300026: greens
+    4300028: trunks
+    4300030: accents_2
+    4300032: smoke_stacks
+    4300034: smoke_stack_base
+    7400000: C4D Animation Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

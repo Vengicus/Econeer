@@ -20,15 +20,20 @@ public class EyeRaycasting : MonoBehaviour {
 
 	}
 
-	public GameObject closestUIElement(GameObject camera, string tag)
+	public GameObject raycastToElement(GameObject camera, string tag)
 	{
-		RaycastHit hit;
 		Vector3 eyes = camera.transform.position;
 		Vector3 ray = camera.transform.forward;
 		float distanceToObstacle = 0;
-		Debug.DrawRay (eyes, ray,Color.green);
+		return returnRaycastData (eyes, ray, distanceToObstacle, tag);
 
-		if (Physics.Raycast (eyes, ray, out hit))
+	}
+
+	private GameObject returnRaycastData(Vector3 start, Vector3 ray, float dist, string tag)
+	{
+		RaycastHit hit;
+		Debug.DrawRay (start, ray,Color.green);
+		if (Physics.Raycast (start, ray, out hit))
 		{
 			if (hit.transform.gameObject.tag == tag) 
 			{
@@ -36,27 +41,8 @@ public class EyeRaycasting : MonoBehaviour {
 			}
 		}
 		return null;
-
 	}
-	public Dictionary<int, GameObject> highlightedTri(GameObject camera, string tag)
-	{
-		Dictionary<int, GameObject> highlightedInfo = new Dictionary<int, GameObject> ();
-		RaycastHit hit;
-		Vector3 eyes = camera.transform.position;
-		Vector3 ray = camera.transform.forward;
-		float distanceToObstacle = 0;
-		Debug.DrawRay (eyes, ray,Color.green);
 
-		if (Physics.Raycast (eyes, ray, out hit))
-		{
-			if (hit.transform.gameObject.tag == tag) 
-			{
-				highlightedInfo.Add (hit.triangleIndex, hit.transform.gameObject);
-				return highlightedInfo;
-			}
-		}
-		return null;
-	}
 
 		
 }

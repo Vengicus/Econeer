@@ -21,12 +21,17 @@ public class ControllerInput : MonoBehaviour {
 	public int attachedObjectSize;
 
 	private ToggleVR vrToggle;
+	private GameObject planet;
 
 	void Start()
 	{
 		vrToggle = GameObject.Find ("RequiredPrefab").GetComponent<ToggleVR> ();
+		planet = GameObject.Find ("WorldSelector");
 	}
-
+	void Update()
+	{
+		
+	}
 	public void BeginDetectingInput (GameObject[] controllerDevices) 
 	{
 		try
@@ -104,6 +109,22 @@ public class ControllerInput : MonoBehaviour {
 			{
 				return raycastToTile (GameController.FPSController);
 			}
+			if (Input.GetKey (KeyCode.Keypad6)) 
+			{
+				planet.transform.Rotate (new Vector3 (0, -1, 0));
+			}
+			if (Input.GetKey (KeyCode.Keypad4)) 
+			{
+				planet.transform.Rotate (new Vector3 (0, 1, 0));
+			}
+			if (Input.GetKey (KeyCode.Keypad8)) 
+			{
+				planet.transform.Rotate (new Vector3 (1, 0, 0));
+			}
+			if (Input.GetKey (KeyCode.Keypad2)) 
+			{
+				planet.transform.Rotate (new Vector3 (-1, 0, 0));
+			}
 		}
 		return null;
 	}
@@ -160,7 +181,7 @@ public class ControllerInput : MonoBehaviour {
 				attachedObject = (GameObject)Instantiate (spawnableObject, spawnPos, Quaternion.identity);
 				attachedObject.name = "TestObject";
 				attachedObject.transform.parent = spawnOrigin;
-				attachedObject.transform.localScale = new Vector3 (0.08f * tileSize , 0.08f * tileSize, 0.08f * tileSize);
+				attachedObject.transform.localScale = new Vector3 (0.07f , 0.07f, 0.07f);
 
 				StartCoroutine ("CollapseUI");
 				//attachedObject.transform.position = controllers [1].transform.forward;

@@ -26,11 +26,7 @@ public class WorldSelection : MonoBehaviour
 			GameController.FPSController = GameObject.Find("FirstPersonCharacter") as GameObject;
 			camera = GameController.FPSController;
 		}
-		GameObject castedElement = eyeCaster.closestUIElement (camera, "SelectableWorldSection");
-		meshSelect = castedElement.GetComponent<MeshSelection> ();
-		Vector3 pos = meshSelect.get3DPositionOfTri (triIndex);
-		Debug.Log (pos.x + "  ||  " + pos.y + "  ||  " + pos.z);
-		GameObject placeHolderObj = (GameObject)Instantiate (placeholder, pos, Quaternion.identity);
+
 	}
 	// Update is called once per frame
 	void Update () 
