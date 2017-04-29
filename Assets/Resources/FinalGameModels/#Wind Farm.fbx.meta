@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: d868fa64b920fa543a1e9226d255f8ec
-timeCreated: 1492907510
+guid: 5e38649d9e573444b80ef6008e343bd1
+timeCreated: 1493423708
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -88,7 +88,69 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: C4D Animation Take
+      takeName: C4D Animation Take
+      firstFrame: 0
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Rocks
+        weight: 1
+      - path: Trees
+        weight: 1
+      - path: Trees/greens
+        weight: 1
+      - path: Trees/trunks
+        weight: 1
+      - path: Wind_Turbines
+        weight: 1
+      - path: Wind_Turbines/Blades
+        weight: 1
+      - path: Wind_Turbines/Blades/blade_shape_0_1
+        weight: 1
+      - path: Wind_Turbines/Blades_2
+        weight: 1
+      - path: Wind_Turbines/Blades_2/blade_shape_0_1_2
+        weight: 1
+      - path: Wind_Turbines/Blades_3
+        weight: 1
+      - path: Wind_Turbines/Blades_3/blade_shape_0_1_3
+        weight: 1
+      - path: Wind_Turbines/Blades_4
+        weight: 1
+      - path: Wind_Turbines/Blades_4/blade_shape_0_1_4
+        weight: 1
+      - path: Wind_Turbines/Blades_5
+        weight: 1
+      - path: Wind_Turbines/Blades_5/blade_shape_0_1_5
+        weight: 1
+      - path: Wind_Turbines/Capsule
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

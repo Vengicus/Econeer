@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: b3bc78816a6f7b844a28127d300c3e91
-timeCreated: 1492906514
+guid: 39b830a2e016bcf44b8b4b882430e010
+timeCreated: 1493423708
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -25,16 +25,22 @@ ModelImporter:
     100034: Nuclear_Stack_2
     100036: Nuclear_Stack_3
     100038: orange_pipes
-    100040: smoke_1
-    100042: smoke_2
-    100044: smoke_3
-    100046: tall_pipes
-    100048: white_base
-    100050: white_base_2
-    100052: white_pipe
-    100054: white_pipe_2
-    100056: white_pipe_3
-    100058: windows
+    100040: Smoke_1
+    100042: smoke_1
+    100044: smoke_1_1
+    100046: Smoke_2
+    100048: smoke_2
+    100050: smoke_2_1
+    100052: Smoke_3
+    100054: smoke_3
+    100056: smoke_3_1
+    100058: tall_pipes
+    100060: white_base
+    100062: white_base_2
+    100064: white_pipe
+    100066: white_pipe_2
+    100068: white_pipe_3
+    100070: windows
     400000: //RootNode
     400002: accent
     400004: accent_2
@@ -55,16 +61,22 @@ ModelImporter:
     400034: Nuclear_Stack_2
     400036: Nuclear_Stack_3
     400038: orange_pipes
-    400040: smoke_1
-    400042: smoke_2
-    400044: smoke_3
-    400046: tall_pipes
-    400048: white_base
-    400050: white_base_2
-    400052: white_pipe
-    400054: white_pipe_2
-    400056: white_pipe_3
-    400058: windows
+    400040: Smoke_1
+    400042: smoke_1
+    400044: smoke_1_1
+    400046: Smoke_2
+    400048: smoke_2
+    400050: smoke_2_1
+    400052: Smoke_3
+    400054: smoke_3
+    400056: smoke_3_1
+    400058: tall_pipes
+    400060: white_base
+    400062: white_base_2
+    400064: white_pipe
+    400066: white_pipe_2
+    400068: white_pipe_3
+    400070: windows
     2300000: accent
     2300002: accent_2
     2300004: accent_3
@@ -80,15 +92,18 @@ ModelImporter:
     2300024: grey_pipes
     2300026: orange_pipes
     2300028: smoke_1
-    2300030: smoke_2
-    2300032: smoke_3
-    2300034: tall_pipes
-    2300036: white_base
-    2300038: white_base_2
-    2300040: white_pipe
-    2300042: white_pipe_2
-    2300044: white_pipe_3
-    2300046: windows
+    2300030: smoke_1_1
+    2300032: smoke_2
+    2300034: smoke_2_1
+    2300036: smoke_3
+    2300038: smoke_3_1
+    2300040: tall_pipes
+    2300042: white_base
+    2300044: white_base_2
+    2300046: white_pipe
+    2300048: white_pipe_2
+    2300050: white_pipe_3
+    2300052: windows
     3300000: accent
     3300002: accent_2
     3300004: accent_3
@@ -104,39 +119,45 @@ ModelImporter:
     3300024: grey_pipes
     3300026: orange_pipes
     3300028: smoke_1
-    3300030: smoke_2
-    3300032: smoke_3
-    3300034: tall_pipes
-    3300036: white_base
-    3300038: white_base_2
-    3300040: white_pipe
-    3300042: white_pipe_2
-    3300044: white_pipe_3
-    3300046: windows
-    4300000: smoke_3
-    4300002: smoke_2
-    4300004: smoke_1
-    4300006: white_pipe
-    4300008: dark_grey_base
-    4300010: accent
-    4300012: white_pipe_2
-    4300014: dark_grey_base_2
-    4300016: accent_2
-    4300018: white_pipe_3
-    4300020: dark_grey_base_3
-    4300022: accent_3
-    4300024: accent_4
-    4300026: white_base
-    4300028: dark_grey_base_4
-    4300030: grey_pipes
-    4300032: windows
-    4300034: bushes
-    4300036: dark_grey_top
-    4300038: grey_mid_top
-    4300040: white_base_2
-    4300042: tall_pipes
-    4300044: accents
-    4300046: orange_pipes
+    3300030: smoke_1_1
+    3300032: smoke_2
+    3300034: smoke_2_1
+    3300036: smoke_3
+    3300038: smoke_3_1
+    3300040: tall_pipes
+    3300042: white_base
+    3300044: white_base_2
+    3300046: white_pipe
+    3300048: white_pipe_2
+    3300050: white_pipe_3
+    3300052: windows
+    4300000: smoke_3_1
+    4300002: smoke_3
+    4300004: smoke_2_1
+    4300006: smoke_2
+    4300008: smoke_1_1
+    4300010: smoke_1
+    4300012: white_pipe
+    4300014: dark_grey_base
+    4300016: accent
+    4300018: white_pipe_2
+    4300020: dark_grey_base_2
+    4300022: accent_2
+    4300024: white_pipe_3
+    4300026: dark_grey_base_3
+    4300028: accent_3
+    4300030: accent_4
+    4300032: white_base
+    4300034: dark_grey_base_4
+    4300036: grey_pipes
+    4300038: windows
+    4300040: bushes
+    4300042: dark_grey_top
+    4300044: grey_mid_top
+    4300046: white_base_2
+    4300048: tall_pipes
+    4300050: accents
+    4300052: orange_pipes
     7400000: C4D Animation Take
     9500000: //RootNode
   materials:
@@ -239,11 +260,23 @@ ModelImporter:
         weight: 1
       - path: Nuclear_Stack_3/white_pipe
         weight: 1
-      - path: smoke_1
+      - path: Smoke_1
         weight: 1
-      - path: smoke_2
+      - path: Smoke_1/smoke_1
         weight: 1
-      - path: smoke_3
+      - path: Smoke_1/smoke_1_1
+        weight: 1
+      - path: Smoke_2
+        weight: 1
+      - path: Smoke_2/smoke_2
+        weight: 1
+      - path: Smoke_2/smoke_2_1
+        weight: 1
+      - path: Smoke_3
+        weight: 1
+      - path: Smoke_3/smoke_3
+        weight: 1
+      - path: Smoke_3/smoke_3_1
         weight: 1
       maskType: 3
       maskSource: {instanceID: 0}

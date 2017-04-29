@@ -1,0 +1,310 @@
+fileFormatVersion: 2
+guid: 8c177f09db944e040a78dcf121fe3e22
+timeCreated: 1493498533
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: accents
+    100004: accents_2
+    100006: Cinema4D_Editor
+    100008: connecting_pipes
+    100010: dark_grey_pipe
+    100012: greens
+    100014: grey_base
+    100016: grey_top_panels
+    100018: Main_Building
+    100020: orange_pipes
+    100022: Silos
+    100024: Smoke_1
+    100026: smoke_1
+    100028: smoke_1_1
+    100030: smoke_1_2
+    100032: smoke_1_2_2
+    100034: smoke_1_3
+    100036: smoke_1_3_2
+    100038: smoke_1_4
+    100040: smoke_1_4_2
+    100042: smoke_1_5
+    100044: smoke_1_5_2
+    100046: Smoke_2
+    100048: Smoke_3
+    100050: Smoke_4
+    100052: Smoke_5
+    100054: smoke_stack_base
+    100056: Smoke_Stacks
+    100058: smoke_stacks
+    100060: Trees
+    100062: trunks
+    100064: white_base
+    100066: windows
+    400000: //RootNode
+    400002: accents
+    400004: accents_2
+    400006: Cinema4D_Editor
+    400008: connecting_pipes
+    400010: dark_grey_pipe
+    400012: greens
+    400014: grey_base
+    400016: grey_top_panels
+    400018: Main_Building
+    400020: orange_pipes
+    400022: Silos
+    400024: Smoke_1
+    400026: smoke_1
+    400028: smoke_1_1
+    400030: smoke_1_2
+    400032: smoke_1_2_2
+    400034: smoke_1_3
+    400036: smoke_1_3_2
+    400038: smoke_1_4
+    400040: smoke_1_4_2
+    400042: smoke_1_5
+    400044: smoke_1_5_2
+    400046: Smoke_2
+    400048: Smoke_3
+    400050: Smoke_4
+    400052: Smoke_5
+    400054: smoke_stack_base
+    400056: Smoke_Stacks
+    400058: smoke_stacks
+    400060: Trees
+    400062: trunks
+    400064: white_base
+    400066: windows
+    2300000: accents
+    2300002: accents_2
+    2300004: connecting_pipes
+    2300006: dark_grey_pipe
+    2300008: greens
+    2300010: grey_base
+    2300012: grey_top_panels
+    2300014: orange_pipes
+    2300016: smoke_1
+    2300018: smoke_1_1
+    2300020: smoke_1_2
+    2300022: smoke_1_2_2
+    2300024: smoke_1_3
+    2300026: smoke_1_3_2
+    2300028: smoke_1_4
+    2300030: smoke_1_4_2
+    2300032: smoke_1_5
+    2300034: smoke_1_5_2
+    2300036: smoke_stack_base
+    2300038: smoke_stacks
+    2300040: trunks
+    2300042: white_base
+    2300044: windows
+    3300000: accents
+    3300002: accents_2
+    3300004: connecting_pipes
+    3300006: dark_grey_pipe
+    3300008: greens
+    3300010: grey_base
+    3300012: grey_top_panels
+    3300014: orange_pipes
+    3300016: smoke_1
+    3300018: smoke_1_1
+    3300020: smoke_1_2
+    3300022: smoke_1_2_2
+    3300024: smoke_1_3
+    3300026: smoke_1_3_2
+    3300028: smoke_1_4
+    3300030: smoke_1_4_2
+    3300032: smoke_1_5
+    3300034: smoke_1_5_2
+    3300036: smoke_stack_base
+    3300038: smoke_stacks
+    3300040: trunks
+    3300042: white_base
+    3300044: windows
+    4300000: smoke_1
+    4300002: smoke_1_4
+    4300004: smoke_1_2
+    4300006: smoke_1_3
+    4300008: smoke_1_3_2
+    4300010: smoke_1_2_2
+    4300012: smoke_1_4_2
+    4300014: smoke_1_1
+    4300016: smoke_1_5
+    4300018: smoke_1_5_2
+    4300020: accents
+    4300022: grey_base
+    4300024: dark_grey_pipe
+    4300026: windows
+    4300028: white_base
+    4300030: grey_top_panels
+    4300032: connecting_pipes
+    4300034: orange_pipes
+    4300036: greens
+    4300038: trunks
+    4300040: accents_2
+    4300042: smoke_stacks
+    4300044: smoke_stack_base
+    7400000: C4D Animation Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: C4D Animation Take
+      takeName: C4D Animation Take
+      firstFrame: 0
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Cinema4D_Editor
+        weight: 1
+      - path: Main_Building
+        weight: 1
+      - path: Main_Building/connecting_pipes
+        weight: 1
+      - path: Main_Building/dark_grey_pipe
+        weight: 1
+      - path: Main_Building/grey_top_panels
+        weight: 1
+      - path: Main_Building/orange_pipes
+        weight: 1
+      - path: Main_Building/Silos
+        weight: 1
+      - path: Main_Building/Silos/accents
+        weight: 1
+      - path: Main_Building/Silos/grey_base
+        weight: 1
+      - path: Main_Building/white_base
+        weight: 1
+      - path: Main_Building/windows
+        weight: 1
+      - path: Smoke_1
+        weight: 1
+      - path: Smoke_1/smoke_1_5
+        weight: 1
+      - path: Smoke_1/smoke_1_5_2
+        weight: 1
+      - path: Smoke_2
+        weight: 1
+      - path: Smoke_2/smoke_1_1
+        weight: 1
+      - path: Smoke_2/smoke_1_4_2
+        weight: 1
+      - path: Smoke_3
+        weight: 1
+      - path: Smoke_3/smoke_1_2_2
+        weight: 1
+      - path: Smoke_3/smoke_1_3_2
+        weight: 1
+      - path: Smoke_4
+        weight: 1
+      - path: Smoke_4/smoke_1_2
+        weight: 1
+      - path: Smoke_4/smoke_1_3
+        weight: 1
+      - path: Smoke_5
+        weight: 1
+      - path: Smoke_5/smoke_1
+        weight: 1
+      - path: Smoke_5/smoke_1_4
+        weight: 1
+      - path: smoke_stack_base
+        weight: 1
+      - path: Smoke_Stacks
+        weight: 1
+      - path: Smoke_Stacks/accents_2
+        weight: 1
+      - path: Smoke_Stacks/smoke_stacks
+        weight: 1
+      - path: Trees
+        weight: 1
+      - path: Trees/greens
+        weight: 1
+      - path: Trees/trunks
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
